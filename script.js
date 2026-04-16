@@ -61,8 +61,9 @@ function store() {
 function add() {
   console.log("inside add");
   if (inputValid()) {
-    let array = []; // create array to store user inputs
-    localStorage.setItem("array", JSON.stringify(array)); // save the array locally
+    //let array = []; // create array to store user inputs
+    //localStorage.setItem("array", JSON.stringify(array)); // save the array locally
     store();
+    document.getElementById("msg").textContent = "AJOUT SUCCES";
   }
 }
