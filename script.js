@@ -2,6 +2,7 @@ function emptyStorage() {
   let array = JSON.parse(localStorage.getItem("array") || "[]");
   array = [];
   localStorage.setItem("array", JSON.stringify(array));
+  showStoredCards(); //removes all displayed cards
 }
 
 function inputValid() {
@@ -64,11 +65,49 @@ function store() {
   localStorage.setItem("array", JSON.stringify(array));
 }
 
+function createCard(profile) {
+  const card = document.createElement("div");
+  card.className = "profile-card"; // use class for styling
+
+  const nameEl = document.createElement("h3");
+  nameEl.textContent = profile.name;
+
+  const emailEl = document.createElement("h3");
+  emailEl.textContent = profile.email;
+
+  const ageEl = document.createElement("h3");
+  ageEl.textContent = profile.age;
+
+  const roleEl = document.createElement("h3");
+  roleEl.textContent = profile.role;
+
+  card.appendChild(nameEl);
+  card.appendChild(emailEl);
+  card.appendChild(ageEl);
+  card.appendChild(roleEl);
+
+  return card;
+}
+
+function showStoredCards() {
+  const container = document.querySelector(".storedCard");
+  container.innerHTML = ""; // clear previous content
+
+  const array = JSON.parse(localStorage.getItem("array") || "[]");
+
+  array.forEach((profile) => {
+    const card = createCard(profile);
+    container.appendChild(card);
+  });
+}
+
 function add() {
   console.log("inside add");
+
   if (inputValid()) {
     //let array = []; // create array to store user inputs
     //localStorage.setItem("array", JSON.stringify(array)); // save the array locally
+    showStoredCards();
     store();
     document.getElementById("msg").textContent = "AJOUT SUCCES";
   }
