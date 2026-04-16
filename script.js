@@ -5,6 +5,11 @@ function inputValid() {
   const drop = document.getElementById("drop").value;
   const msg = document.getElementById("msg");
 
+  if (name == "" || email == "" || age == 0) {
+    msg.textContent = "TOUS LES CHAMPS SONT NECESSAIRE";
+    return false;
+  }
+
   const isAlpha = (str) => /^[a-z]+$/i.test(str);
   if (!isAlpha(name)) {
     msg.textContent = "NOM INVALID";
