@@ -13,10 +13,25 @@
 #submit {
   font-size: 1em;
   font-weight: bold;
-  width: 19%;
+  width: 25em;
   margin-top: 10px;
 }
 
 .addCard button {
   background-color: greenyellow;
+}
+
+/*styling stored data cards*/
+.storedCard {
+  color: black;
+  display: grid;
+  /* Minimum width of 250px, expands to fill remaining space (1fr) */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.profile-card {
+  margin: 50px;
+  background-color: aliceblue;
+  font-size: large;
 }
