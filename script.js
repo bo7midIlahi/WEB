@@ -94,6 +94,7 @@ function showStoredCards() {
   container.innerHTML = ""; // clear previous content
 
   const array = JSON.parse(localStorage.getItem("array") || "[]");
+  console.log("Rendering profiles:", array);
 
   array.forEach((profile) => {
     const card = createCard(profile);
@@ -107,8 +108,8 @@ function add() {
   if (inputValid()) {
     //let array = []; // create array to store user inputs
     //localStorage.setItem("array", JSON.stringify(array)); // save the array locally
-    showStoredCards();
     store();
+    showStoredCards();
     document.getElementById("msg").textContent = "AJOUT SUCCES";
   }
 }
