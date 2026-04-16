@@ -1,3 +1,9 @@
+function emptyStorage() {
+  let array = JSON.parse(localStorage.getItem("array") || "[]");
+  array = [];
+  localStorage.setItem("array", JSON.stringify(array));
+}
+
 function inputValid() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
