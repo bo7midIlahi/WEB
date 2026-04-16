@@ -17,8 +17,20 @@
   margin-top: 10px;
 }
 
-.addCard button {
+.addCard button,
+.storedCard .profile-card button {
   background-color: greenyellow;
+}
+
+.storedCard .profile-card button {
+  width: 100%;
+  font-size: large;
+}
+
+.addCard button:active,
+.storedCard .profile-card button:active {
+  background-color: aliceblue;
+  color: blueviolet;
 }
 
 /*styling stored data cards*/

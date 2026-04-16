@@ -81,10 +81,14 @@ function createCard(profile) {
   const roleEl = document.createElement("h3");
   roleEl.textContent = profile.role;
 
+  const button = document.createElement("button");
+  button.textContent = "Supprimer";
+
   card.appendChild(nameEl);
   card.appendChild(emailEl);
   card.appendChild(ageEl);
   card.appendChild(roleEl);
+  card.appendChild(button);
 
   return card;
 }
