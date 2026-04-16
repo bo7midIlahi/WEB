@@ -2,9 +2,19 @@
   color: green;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
+}
+
+#name,
+#email,
+#age,
+#drop,
+#submit {
+  font-size: 1em;
+  font-weight: bold;
+  width: 19%;
+  margin-top: 10px;
 }
 
 .addCard button {
