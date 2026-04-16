@@ -48,6 +48,7 @@ function inputValid() {
 
 function store() {
   const userProfile = {
+    id: Date.now() + Math.random().toString(36), // simple unique ID
     name: document.getElementById("name").value,
     email: document.getElementById("email").value,
     age: document.getElementById("age").value,
@@ -67,7 +68,8 @@ function store() {
 
 function createCard(profile) {
   const card = document.createElement("div");
-  card.className = "profile-card"; // use class for styling
+  card.className = "profile-card";
+  card.dataset.id = profile.id; // store the ID on the card
 
   const nameEl = document.createElement("h3");
   nameEl.textContent = profile.name;
@@ -83,6 +85,10 @@ function createCard(profile) {
 
   const button = document.createElement("button");
   button.textContent = "Supprimer";
+  button.addEventListener("click", function () {
+    // function to remove card whenever button is clicked
+    deleteProfile(profile.id);
+  });
 
   card.appendChild(nameEl);
   card.appendChild(emailEl);
@@ -91,6 +97,13 @@ function createCard(profile) {
   card.appendChild(button);
 
   return card;
+}
+
+function deleteProfile(id) {
+  let array = JSON.parse(localStorage.getItem("array") || "[]"); //get array
+  array = array.filter((profile) => profile.id !== id); //remove card
+  localStorage.setItem("array", JSON.stringify(array)); // re-store array
+  showStoredCards(); // re-display the updated list
 }
 
 function showStoredCards() {
