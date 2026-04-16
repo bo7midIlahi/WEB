@@ -39,10 +39,30 @@ function inputValid() {
   return true;
 }
 
-function store() {}
+function store() {
+  const userProfile = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    age: document.getElementById("age").value,
+    role: document.getElementById("drop").options[
+      document.getElementById("drop").selectedIndex
+    ].text,
+  };
+
+  //retrieve array
+  let array = JSON.parse(localStorage.getItem("array") || "[]");
+  //update array
+  array.push(userProfile);
+  console.log(array);
+  //store array
+  localStorage.setItem("array", JSON.stringify(array));
+}
 
 function add() {
+  console.log("inside add");
   if (inputValid()) {
+    let array = []; // create array to store user inputs
+    localStorage.setItem("array", JSON.stringify(array)); // save the array locally
     store();
   }
 }
